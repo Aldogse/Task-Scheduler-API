@@ -1,0 +1,10 @@
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskSchedDB\bin\Debug\TaskSchedDB.dacpac
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskSchedDB\bin\Debug\TaskSchedDB.dll
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskSchedDB\bin\Debug\TaskSchedDB.pdb
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskSchedDB\obj\Debug\TaskSchedDB.sqlproj.AssemblyReference.cache
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskSchedDB\obj\Debug\TaskSchedDB.dll
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskSchedDB\obj\Debug\TaskSchedDB.pdb
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskSchedDB\obj\Debug\Model.xml
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskSchedDB\obj\Debug\refactor.xml
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskSchedDB\obj\Debug\postdeploy.sql
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskSchedDB\obj\Debug\predeploy.sql

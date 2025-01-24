@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "5xLFZfOujr5CIaZLhI+HgCmkXapne3WCXq2v016JDAr5ROkS02QOYGJzhWSCFWMN/uXAg7Y8CFaR4X4JJ6BiqQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Ezekiel\\Desktop\\API Projects\\TaskSchedulerAPI\\TaskScheduler.Contracts\\TaskScheduler.Contracts.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Ezekiel\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\Ezekiel\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\Ezekiel\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\Ezekiel\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\Ezekiel\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,12 @@
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Shared\bin\Debug\net7.0\TaskScheduler.Shared.deps.json
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Shared\bin\Debug\net7.0\TaskScheduler.Shared.dll
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Shared\bin\Debug\net7.0\TaskScheduler.Shared.pdb
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Shared\obj\Debug\net7.0\TaskScheduler.Shared.csproj.AssemblyReference.cache
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Shared\obj\Debug\net7.0\TaskScheduler.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Shared\obj\Debug\net7.0\TaskScheduler.Shared.AssemblyInfoInputs.cache
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Shared\obj\Debug\net7.0\TaskScheduler.Shared.AssemblyInfo.cs
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Shared\obj\Debug\net7.0\TaskScheduler.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Shared\obj\Debug\net7.0\TaskScheduler.Shared.dll
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Shared\obj\Debug\net7.0\refint\TaskScheduler.Shared.dll
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Shared\obj\Debug\net7.0\TaskScheduler.Shared.pdb
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Shared\obj\Debug\net7.0\ref\TaskScheduler.Shared.dll

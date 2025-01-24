@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskSchedulerAPI", "TaskSchedulerAPI\TaskSchedulerAPI.csproj", "{2A07E0CE-330C-43AB-96A6-F1CB835BEF7F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{06D74964-F128-4761-BB0D-B241FAF4F651} = {06D74964-F128-4761-BB0D-B241FAF4F651}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskScheduler.Contracts", "TaskScheduler.Contracts\TaskScheduler.Contracts.csproj", "{06D74964-F128-4761-BB0D-B241FAF4F651}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TaskSchedDB", "TaskSchedDB\TaskSchedDB.sqlproj", "{7A68B1A5-CFEC-444C-975C-D5E263312507}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A07E0CE-330C-43AB-96A6-F1CB835BEF7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A07E0CE-330C-43AB-96A6-F1CB835BEF7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A07E0CE-330C-43AB-96A6-F1CB835BEF7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A07E0CE-330C-43AB-96A6-F1CB835BEF7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06D74964-F128-4761-BB0D-B241FAF4F651}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06D74964-F128-4761-BB0D-B241FAF4F651}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06D74964-F128-4761-BB0D-B241FAF4F651}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06D74964-F128-4761-BB0D-B241FAF4F651}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A68B1A5-CFEC-444C-975C-D5E263312507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A68B1A5-CFEC-444C-975C-D5E263312507}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A68B1A5-CFEC-444C-975C-D5E263312507}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7A68B1A5-CFEC-444C-975C-D5E263312507}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A68B1A5-CFEC-444C-975C-D5E263312507}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A68B1A5-CFEC-444C-975C-D5E263312507}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {85E4AEAF-2E97-4364-A4B2-B956662477E5}
+	EndGlobalSection
+EndGlobal

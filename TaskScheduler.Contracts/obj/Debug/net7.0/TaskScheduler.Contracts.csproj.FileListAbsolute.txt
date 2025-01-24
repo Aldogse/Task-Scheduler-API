@@ -1,0 +1,12 @@
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Contracts\bin\Debug\net7.0\TaskScheduler.Contracts.deps.json
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Contracts\bin\Debug\net7.0\TaskScheduler.Contracts.dll
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Contracts\bin\Debug\net7.0\TaskScheduler.Contracts.pdb
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Contracts\obj\Debug\net7.0\TaskScheduler.Contracts.csproj.AssemblyReference.cache
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Contracts\obj\Debug\net7.0\TaskScheduler.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Contracts\obj\Debug\net7.0\TaskScheduler.Contracts.AssemblyInfoInputs.cache
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Contracts\obj\Debug\net7.0\TaskScheduler.Contracts.AssemblyInfo.cs
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Contracts\obj\Debug\net7.0\TaskScheduler.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Contracts\obj\Debug\net7.0\TaskScheduler.Contracts.dll
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Contracts\obj\Debug\net7.0\refint\TaskScheduler.Contracts.dll
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Contracts\obj\Debug\net7.0\TaskScheduler.Contracts.pdb
+C:\Users\Ezekiel\Desktop\API Projects\TaskSchedulerAPI\TaskScheduler.Contracts\obj\Debug\net7.0\ref\TaskScheduler.Contracts.dll
