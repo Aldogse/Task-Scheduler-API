@@ -51,13 +51,13 @@ namespace TaskSchedulerAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "dc2cfe55-e9e9-4aab-bb75-dafc40b5b5b8",
+                            Id = "9b3f1a23-040f-46e5-8b43-cdb48c255122",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "176574e8-e688-45ea-9352-aa8e9fc54939",
+                            Id = "abe243d1-6ff0-4fd0-9aa3-4e9e15626a9d",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

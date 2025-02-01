@@ -60,26 +60,29 @@ namespace TaskSchedulerAPI.Repositories
 
         public async Task<PaginatedResponse<TaskResponse>> PaginatedRequest(int page_size, int page_count)
         {
-            IQueryable<TaskModel> all_tasks = _context.Tasks.AsQueryable();
+            //get all the data on the db then set it as a Queryable instance
+            IQueryable<TaskModel> tasks =  _context.Tasks.AsQueryable();
 
-            IQueryable<TaskModel> paginated_query =  _context.Tasks.OrderBy(t => t.Id)
-                                                                      .Skip((page_count - 1) * page_size)
-                                                                      .Take(page_size);
-            List<TaskResponse> paginated_tasks = await paginated_query
-                                                .Select(task =>
-                                                new TaskResponse(
-                                                        task.Id,
-                                                        task.TaskName,
-                                                        task.Description,
-                                                        task.StartDateAndTime.ToString(),
-                                                        task.EndDateAndTime.ToString(),
-                                                        task.Owner.Email,
-                                                        task.Status.Name,
-                                                        task.ExpirationDate.ToString(),
-                                                        task.TaskLevel.Level
-                                                    )).ToListAsync();
-            int total_items = await all_tasks.CountAsync();
-            return new PaginatedResponse<TaskResponse>(page_size,page_count,total_items,paginated_tasks);
+            //count the number OF TASK consist on the query
+            int task_count = await tasks.CountAsync();
+
+            //generate the paginated query
+            var paginated_query =  tasks.OrderBy(t => t.Id)
+                .Skip((page_count - 1) * page_size)
+                .Take(page_size);
+
+            var response = await paginated_query.Select(task => new TaskResponse(
+                                          task.Id,
+                                          task.TaskName,
+                                          task.Description,
+                                          task.StartDateAndTime.ToString(),
+                                          task.EndDateAndTime.ToString(),
+                                          task.Owner.Email,
+                                          task.Status.Name,
+                                          task.ExpirationDate.ToString(),
+                                          task.TaskLevel.Level)).ToListAsync();
+
+            return new PaginatedResponse<TaskResponse>(page_size,page_count,task_count,response);
         }
     }
 }

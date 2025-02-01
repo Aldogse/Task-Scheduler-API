@@ -30,6 +30,7 @@ namespace TaskSchedulerAPI.Repositories
             return _applicationDBContext.Users.ToList();
         }
 
+
         public AppUser GetUser(string id)
         {
             return _applicationDBContext.Users.Where(u => u.Id == id).FirstOrDefault();

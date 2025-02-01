@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 using Azure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Writers;
@@ -12,6 +13,7 @@ using TaskSchedulerAPI.Model;
 namespace TaskSchedulerAPI.Controller
 {
     [ApiController]
+    [Authorize]
     [Route("/Task/v1")]
     public class TaskController : ControllerBase
     {
@@ -25,6 +27,7 @@ namespace TaskSchedulerAPI.Controller
         }
 
         [HttpGet("all")]
+        [Authorize]
         public IActionResult GetTasks()
         {
             var request = _taskRepository.GetAllTasks();
@@ -77,7 +80,8 @@ namespace TaskSchedulerAPI.Controller
             return Ok(response);
         }
 
-        [HttpPost]
+        [HttpPost("create")]
+        [Authorize]       
         public async Task<IActionResult> CreateTask([FromBody] CreateTaskRequest newTask)
         {
             if (!ModelState.IsValid)
@@ -185,6 +189,7 @@ namespace TaskSchedulerAPI.Controller
         }
 
         [HttpGet("available")]
+        [Authorize(Roles ="User")]
         public IActionResult GetAvailableTask()
         {
             try
@@ -321,20 +326,24 @@ namespace TaskSchedulerAPI.Controller
                 return StatusCode(500,ex.Message);
             }
         }
+
         [HttpGet("PaginatedRequest")]
-        public async Task<IActionResult> paginated_request([FromQuery]int page_size,[FromQuery]int page_number)
+        [Authorize(Roles = "User")]
+        public async Task<IActionResult> PaginatedRequest([FromQuery]int page_size, [FromQuery]int page_count)
         {
             try
             {
-                PaginatedResponse<TaskResponse> response = await _taskRepository.PaginatedRequest(page_size,
-                                                                                                  page_number);
-                return Ok(response);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+                var paginated_request = await _taskRepository.PaginatedRequest(page_size, page_count);
+                return Ok(paginated_request);
             }
-            catch (Exception ex) 
+            catch(Exception ex)
             {
                 return StatusCode(500,$"Internal server error {ex.Message}");
             }
-            
         }
     }
 }

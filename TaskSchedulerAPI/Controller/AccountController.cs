@@ -7,6 +7,8 @@ using TaskSchedulerAPI.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using System.Data;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace TaskSchedulerAPI.Controller
 {
@@ -18,68 +20,75 @@ namespace TaskSchedulerAPI.Controller
         private readonly ApplicationDBContext _context;
         private readonly IAccountRepository _accountRepository;
         private readonly UserManager<AppUser> _userManager;
-        private readonly SignInManager<AppUser> _signInManager;       
+        private readonly SignInManager<AppUser> _signInManager;
+        private readonly ITokenService _tokenService;
 
         public AccountController(UserManager<AppUser> userManager,
                                 SignInManager<AppUser> signInManager,
                                 ApplicationDBContext context, 
-                                IAccountRepository accountRepository) 
+                                IAccountRepository accountRepository,
+                                ITokenService tokenService) 
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
             _accountRepository = accountRepository;
+            _tokenService = tokenService;
         }
 
         [HttpPost("register")]
+        [AllowAnonymous]
         public async Task<ActionResult> Register([FromBody] RegisterAccountRequest accountRequest)
         {
             try
             {
-               if(!ModelState.IsValid)
-               {
-                  return BadRequest(ModelState);
-               }
-
-                if(_accountRepository.EmailTaken(accountRequest.Email))
+                //check if the client follow the contract requirement
+                if(!ModelState.IsValid)
                 {
-                    return StatusCode(400,"Email already use try again");
+                    return BadRequest(ModelState);
                 }
 
-                    AppUser new_user = new AppUser
-                    {
-                        FirstName = accountRequest.first_name,
-                        LastName = accountRequest.last_name,
-                        Email = accountRequest.Email,
-                        UserName = accountRequest.Email
-                    };
+                //check if the email is already taken 
+                if(_accountRepository.EmailTaken(accountRequest.Email))
+                {
+                    return StatusCode(400, "Email already taken");
+                }
 
-                    var create_user = await _userManager.CreateAsync(new_user,accountRequest.Password);
+                //Registration process
 
-                    if(create_user.Succeeded)
-                    {
-                      var user_role = await _userManager.AddToRoleAsync(new_user,"User");
+                AppUser new_user = new AppUser
+                {
+                    Email = accountRequest.Email,
+                    UserName = accountRequest.Email,
+                    LastName = accountRequest.last_name,
+                    FirstName = accountRequest.first_name,
+                };
 
-                      if(user_role.Succeeded)
-                      {
-                        return Ok("User Created");
-                    }
-                       else
-                       {
-                         return BadRequest(user_role.Errors);
-                       }
-                    }
+                IdentityResult add_user = await _userManager.CreateAsync(new_user,accountRequest.Password);
+
+                if (add_user.Succeeded)
+                {
+                    //add the role for the user 
+                    //all user who register in this endpoint will tagged as regular user
+                    IdentityResult role = await _userManager.AddToRoleAsync(new_user,"User");
+
+                    CreatedUserResponse response = new CreatedUserResponse(new_user.Email,
+                                                                           new_user.FirstName,
+                                                                           new_user.LastName);
+                     return Ok(response);
+                }
             }
-            catch (Exception ex )
+
+            catch (Exception ex)
             {
-                return StatusCode(500, $"{ex.Message}");
+                return StatusCode(500, $"Internal server error {ex.Message}");
             }
-                                 
-            return BadRequest();
+            return BadRequest("Cannot process request");
         }
 
 
         [HttpGet("users")]
+        [Authorize(Roles ="Admin")]
         public IActionResult GetAllUsers()
         {
             List<AppUser> users = _accountRepository.GetAllUsers();
@@ -99,7 +108,7 @@ namespace TaskSchedulerAPI.Controller
                     user.Email,
                     user.FirstName,
                     user.LastName,
-                    role == string.Empty ?"No role assigned yet" : role
+                    role == string.Empty ?"No role assigned yet" : role                  
                     );
                 list_of_users.Add(response);
             }
@@ -107,14 +116,16 @@ namespace TaskSchedulerAPI.Controller
         }
 
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task <IActionResult> LogIn([FromBody]LogInRequest logInRequest)
         {
             AppUser? user = _context.Users.Where(u => u.Email == logInRequest.Email).FirstOrDefault();
 
             if(user == null)
             {
-                StatusCode(400,"Email not found");
+                return StatusCode(404,"Email not found");
             }
+
 
             bool check_password =  await _userManager.CheckPasswordAsync(user,logInRequest.Password);
 
@@ -124,7 +135,11 @@ namespace TaskSchedulerAPI.Controller
 
                 if (sign_in.Succeeded)
                 {
-                    return Ok("Log in Success");
+                    string access_token = _tokenService.CreateToken(user);
+                    return StatusCode(200,new LoginResponse(user.FirstName,
+                                                user.LastName,
+                                                user.Email,
+                                                access_token));
                 }
                 return StatusCode(500, "Internal server error");
             }
@@ -132,6 +147,7 @@ namespace TaskSchedulerAPI.Controller
         }
 
         [HttpGet("User/{id}")]
+        [Authorize]
         public IActionResult GetUser([FromRoute] string id) 
         {            
                 AppUser user = _accountRepository.GetUser(id);
@@ -150,6 +166,33 @@ namespace TaskSchedulerAPI.Controller
                     user_role == string.Empty ? "No role assigned yet" : user_role
                    );
                 return Ok(response);           
+        }
+        [HttpGet("GetCurrenUserData")]
+        [Authorize(Roles = "User")]
+        public IActionResult GetCurrenUserData()
+        {
+            //get the identity of the current user
+
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+
+
+            if (identity != null)
+            {
+                // get the claims associated on the user
+                // the user
+                var user_claim = identity.Claims;
+
+                var first_name = user_claim.Where(o => o.Type == ClaimTypes.GivenName).FirstOrDefault().Value;
+                var last_name = user_claim.Where(o => o.Type == ClaimTypes.Surname).FirstOrDefault().Value;
+                var email = user_claim.Where(o => o.Type == ClaimTypes.Email).FirstOrDefault().Value;
+                var role = user_claim.Where(o => o.Type == ClaimTypes.Role).FirstOrDefault().Value;
+
+                var response = new CurrentUserDataResponse(first_name,last_name,email,role);
+
+                return Ok(response);
+            }
+
+            return null;
         }
 
     }
